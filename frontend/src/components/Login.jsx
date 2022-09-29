@@ -1,29 +1,52 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import { Formik } from 'formik';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+import Alert from 'react-bootstrap/Alert';
 import avatar from '../assets/avatar.jpg';
 import loginSchema from '../utils/validationSchema';
+import fetchAuth from '../utils/fetchAuth';
+import useAuth from '../hooks/index.jsx';
+import authMapping from '../utils/mapping';
 
 const Login = () => {
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const inputRef = useRef(null);
+  const auth = useAuth();
+  const { logIn } = auth;
+  const [feedbackState, setFeedback] = useState(false);
 
   useEffect(() => {
     inputRef.current.focus();
   }, []);
 
+  const renderFeedback = () => {
+    if (feedbackState) {
+      return (
+        <Alert className="my-2" style={{ textAlign: 'center' }} variant="danger">
+          {t('incorrectAuthData')}
+        </Alert>
+      );
+    }
+    return null;
+  };
+
   return (
     <Formik
       validationSchema={loginSchema}
-      onSubmit={() => {
+      onSubmit={async (data) => {
+        console.log(data);
+        const response = await fetchAuth(data);
+        authMapping[response.status](response, logIn, setFeedback, navigate);
       }}
       initialValues={{
-        name: '',
+        username: '',
         password: '',
       }}
     >
@@ -51,10 +74,10 @@ const Login = () => {
                         ref={inputRef}
                         type="text"
                         placeholder={t('your nickname')}
-                        name="name"
-                        value={values.name}
+                        name="username"
+                        value={values.username}
                         onChange={handleChange}
-                        isInvalid={touched.name && !!errors.name}
+                        isInvalid={touched.username && !!errors.username}
                       />
                     </Form.Group>
                     <Form.Group controlId="validationFormik03" className="formGroup mb-3">
@@ -66,6 +89,7 @@ const Login = () => {
                         onChange={handleChange}
                         isInvalid={touched.password && !!errors.password}
                       />
+                      {renderFeedback()}
                     </Form.Group>
                     <button type="submit" className="btn btn-outline-primary btn-block w-100">
                       {t('join')}

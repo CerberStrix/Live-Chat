@@ -5,5 +5,6 @@ export default {
     password: 'Пароль',
     registration: 'Регистрация',
     'doesnt hava account?': 'Нет аккаунта?',
+    incorrectAuthData: 'Неправильный логин или пароль',
   },
 };
