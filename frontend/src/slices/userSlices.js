@@ -34,7 +34,9 @@ const userSlice = createSlice({
       .addCase(fetchLogin.fulfilled, (state, action) => {
         const { token, username } = action.payload;
         localStorage.setItem('authUser', { token, username });
-        state = { ...state, token, username };
+        state = {
+          ...state, token, username, error: null,
+        };
       });
   },
 });

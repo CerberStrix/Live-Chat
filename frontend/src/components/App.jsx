@@ -38,7 +38,6 @@ const AuthProvider = ({ children }) => {
 const PrivateRoute = ({ children }) => {
   const auth = useAuth();
   const location = useLocation();
-
   return (
     auth.loggedIn ? children : <Navigate to="/login" state={{ from: location }} />
   );
@@ -46,7 +45,7 @@ const PrivateRoute = ({ children }) => {
 
 const App = () => (
   <AuthProvider>
-    <div className="App">
+    <div className="App d-flex flex-column h-100">
       <Router>
         <NavBar />
         <Routes>
