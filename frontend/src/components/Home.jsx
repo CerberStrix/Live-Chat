@@ -11,16 +11,7 @@ import { actions as messagesActions, selectors as messagesSelectors } from '../s
 import { actions as UIActions } from '../slices/UISlice.js';
 import Channels from './Channels.jsx';
 import Chat from './Chat.jsx';
-
-const getAuthHeader = () => {
-  const token = localStorage.getItem('userAuth');
-
-  if (token) {
-    return { Authorization: `Bearer ${token}` };
-  }
-
-  return {};
-};
+import useAuth from '../hooks/useAuth.jsx';
 
 const Home = () => {
   const { t } = useTranslation();
@@ -28,11 +19,12 @@ const Home = () => {
   const channelsState = useSelector(channelsSelectors.selectAll);
   const messagesState = useSelector(messagesSelectors.selectAll);
   const currentChannel = useSelector((state) => state.currentUI.currentChannelId);
-  console.log(channelsState);
-  console.log(messagesState);
-  console.log(currentChannel);
+
+
+
+  const { getAuthHeader } = useAuth();
+  const data = getAuthHeader();
   useEffect(() => {
-    const data = getAuthHeader();
     const fetchData = async () => {
       const response = await axios.get(routes.dataPath(), { headers: data });
       const { channels, currentChannelId, messages } = response.data;
@@ -45,7 +37,7 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <Container className="my-4 h-100 shadow">
+    <Container className="my-4 h-100 shadow overflow-hidden rounded shadow">
       <Row className="h-100 flex-md-row">
         <Col sm={4} md={2} className="px-2 pt-5 bg-light border-end">
           <div className="d-flex justify-content-between mb-2 ps-3 pe-2">
@@ -57,7 +49,7 @@ const Home = () => {
           </div>
           <Channels />
         </Col>
-        <Col className="px-0">
+        <Col className="px-0 h-100">
           <Chat />
         </Col>
       </Row>

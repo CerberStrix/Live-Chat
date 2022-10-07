@@ -3,7 +3,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import { useTranslation } from 'react-i18next';
-import useAuth from '../hooks/index.jsx';
+import useAuth from '../hooks/useAuth.jsx';
 
 const NavBar = () => {
   const auth = useAuth();

@@ -6,7 +6,7 @@ const authMapping = {
     setFeedback(false);
     logIn();
     const { data } = authData;
-    localStorage.setItem('userAuth', data.token);
+    localStorage.setItem('userAuth', JSON.stringify(data));
     navigate('/', { replace: true });
   },
 };

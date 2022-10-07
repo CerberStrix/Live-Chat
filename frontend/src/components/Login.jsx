@@ -11,7 +11,7 @@ import Alert from 'react-bootstrap/Alert';
 import avatar from '../assets/avatar.jpg';
 import loginSchema from '../utils/validationSchema';
 import fetchAuth from '../utils/fetchAuth';
-import useAuth from '../hooks/index.jsx';
+import useAuth from '../hooks/useAuth.jsx';
 import authMapping from '../utils/mapping';
 
 const Login = () => {

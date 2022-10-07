@@ -1,5 +1,5 @@
 import '../App.css';
-import React, { useState, useMemo, useCallback } from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   BrowserRouter as Router,
@@ -9,31 +9,12 @@ import {
   useLocation,
 } from 'react-router-dom';
 
-import AuthContext from '../contexts/index.jsx';
-import useAuth from '../hooks/index.jsx';
+import useAuth from '../hooks/useAuth.jsx';
+import AuthProvider from '../contexts/AuthProvider';
 import Home from './Home';
 import Login from './Login';
 import NotFound from './NotFound';
 import NavBar from './NavBar';
-
-const AuthProvider = ({ children }) => {
-  const token = localStorage.getItem('userAuth');
-  const [loggedIn, setLoggedIn] = useState(!!token);
-
-  const logIn = useCallback(() => setLoggedIn(true), []);
-  const logOut = useCallback(() => {
-    localStorage.removeItem('userAuth');
-    setLoggedIn(false);
-  }, []);
-
-  const authValue = useMemo(() => ({ logIn, logOut, loggedIn }), [loggedIn, logIn, logOut]);
-
-  return (
-    <AuthContext.Provider value={authValue}>
-      {children}
-    </AuthContext.Provider>
-  );
-};
 
 const PrivateRoute = ({ children }) => {
   const auth = useAuth();
