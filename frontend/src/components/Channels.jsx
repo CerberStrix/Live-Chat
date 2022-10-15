@@ -10,7 +10,10 @@ const Channels = () => {
     <div>
       <ul className="nav flex-column nav-pills nav-fill">
         {channelsState.map((channel) => (
-          <Channel key={channel.id} channel={channel} />
+          <li className="nav-item w-100" key={channel.id}>
+            <Channel key={channel.id} channel={channel} />
+          </li>
+
         ))}
       </ul>
     </div>

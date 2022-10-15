@@ -15,6 +15,7 @@ import Home from './Home';
 import Login from './Login';
 import NotFound from './NotFound';
 import NavBar from './NavBar';
+import RenderModal from './modals';
 
 const PrivateRoute = ({ children }) => {
   const auth = useAuth();
@@ -42,6 +43,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
+      <RenderModal />
     </div>
   </AuthProvider>
 );

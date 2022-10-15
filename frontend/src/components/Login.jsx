@@ -9,7 +9,7 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Alert from 'react-bootstrap/Alert';
 import avatar from '../assets/avatar.jpg';
-import loginSchema from '../utils/validationSchema';
+import { loginSchema } from '../utils/validation';
 import fetchAuth from '../utils/fetchAuth';
 import useAuth from '../hooks/useAuth.jsx';
 import authMapping from '../utils/mapping';

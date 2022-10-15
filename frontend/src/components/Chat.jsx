@@ -23,6 +23,7 @@ const Chat = () => {
         <p className="m-0">
           <b>
             #
+            {' '}
             {currendChannel.name}
           </b>
         </p>

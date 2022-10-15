@@ -28,15 +28,12 @@ const NewMessages = () => {
     if (message.length <= 0) {
       return;
     }
-
     const data = {
       body: message,
       channelId: currentChannel,
       username: getUsername(),
     };
-
     createNewChatMessage(data);
-
     setMessage('');
   };
 

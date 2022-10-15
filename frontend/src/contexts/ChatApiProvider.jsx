@@ -12,7 +12,7 @@ const ChatApiProvider = ({ children, socket }) => {
 
   const addNewChannel = (channel) => socket.emit('newChannel', channel, (data) => {
     if (data.status === 'ok') {
-      dispatch(UIActions.setCurrentChannelId(data.data.id));
+      dispatch(UIActions.setCurrentChannelId({ currentChannelId: data.data.id }));
     }
   });
 

@@ -9,7 +9,6 @@ const Message = ({ message }) => (
     :
     {' '}
     {message.body}
-
   </div>
 );
 
