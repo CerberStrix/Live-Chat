@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
+import toastParams from '../../toastParams.js';
 import { actions as UIActions } from '../../slices/UISlice.js';
 import useChatApi from '../../hooks/useChatApi';
 
@@ -25,6 +27,7 @@ const DeleteChannel = () => {
     e.preventDefault();
     removeChannel(targetChannel);
     dispatch(UIActions.hideModal());
+    toast.success(t('toast.remove_channel'), toastParams);
   };
 
   return (

@@ -9,6 +9,7 @@ import {
   useLocation,
 } from 'react-router-dom';
 
+import { ToastContainer } from 'react-toastify';
 import useAuth from '../hooks/useAuth.jsx';
 import AuthProvider from '../contexts/AuthProvider';
 import Home from './Home';
@@ -17,6 +18,7 @@ import Registration from './Registration';
 import NotFound from './NotFound';
 import NavBar from './NavBar';
 import RenderModal from './modals';
+import 'react-toastify/dist/ReactToastify.css';
 
 const PrivateRoute = ({ children }) => {
   const auth = useAuth();
@@ -46,6 +48,17 @@ const App = () => (
         </Routes>
       </Router>
       <RenderModal />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   </AuthProvider>
 );

@@ -9,7 +9,11 @@ export default {
     'log out': 'Выйти',
     channels: 'Каналы',
     'enter messages': 'Введите сообщение',
-    message_count: 'сообщений',
+    counter: {
+      count_one: '{{count}} сообщение',
+      count_few: '{{count}} сообщения',
+      count_many: '{{count}} сообщений',
+    },
     enter_message: 'Введите сообщение...',
     add_channel: 'Добавить канал',
     send: 'Отправить',
@@ -29,5 +33,11 @@ export default {
     same_password: 'Пароли должны совпадать',
     have_an_account: 'Есть аккаунт?',
     account_exist: 'Аккаунт с таким именем уже существует',
+    toast: {
+      add_channel: 'Канал создан',
+      remove_channel: 'Канал удалён',
+      rename_channel: 'Канал переименован',
+      dataFetchError: 'Возникла ошибка с загрузкой данных. Обновите старинцу.',
+    },
   },
 };

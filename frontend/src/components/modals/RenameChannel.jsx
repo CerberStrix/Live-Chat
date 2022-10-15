@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from 'react';
+import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal, FormControl, Form } from 'react-bootstrap';
 import { Formik } from 'formik';
 import { useTranslation } from 'react-i18next';
+import toastParams from '../../toastParams.js';
 import { validateName } from '../../utils/validation.js';
 import { actions as UIActions } from '../../slices/UISlice.js';
 import { selectors as channelsSelectors } from '../../slices/channelsSlice.js';
@@ -47,6 +49,7 @@ const RenameChannel = () => {
           onSubmit={(values) => {
             renameChannel(targetChannel, values);
             dispatch(UIActions.hideModal());
+            toast.success(t('toast.rename_channel'), toastParams);
           }}
         >
           {({

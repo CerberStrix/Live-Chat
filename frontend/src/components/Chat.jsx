@@ -28,9 +28,7 @@ const Chat = () => {
           </b>
         </p>
         <span className="text-muted">
-          {currentMessages.length}
-          {' '}
-          {t('message_count')}
+          {t('counter.count', { count: currentMessages.length })}
         </span>
       </div>
       <Messages currentMessages={currentMessages} />

@@ -3,10 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Modal, FormControl, Form } from 'react-bootstrap';
 import { Formik } from 'formik';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 import { validateName } from '../../utils/validation.js';
 import { actions as UIActions } from '../../slices/UISlice.js';
 import { selectors as channelsSelectors } from '../../slices/channelsSlice.js';
 import useChatApi from '../../hooks/useChatApi';
+import toastParams from '../../toastParams.js';
 
 const AddChannel = () => {
   const { t } = useTranslation();
@@ -45,6 +47,7 @@ const AddChannel = () => {
           onSubmit={(values) => {
             addNewChannel(values);
             dispatch(UIActions.hideModal());
+            toast.success(t('toast.add_channel'), toastParams);
           }}
         >
           {({

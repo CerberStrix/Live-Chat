@@ -3,36 +3,39 @@ import axios from 'axios';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 import routes from '../routes.js';
-import { actions as channelsActions, selectors as channelsSelectors } from '../slices/channelsSlice.js';
-import { actions as messagesActions, selectors as messagesSelectors } from '../slices/messagesSlice.js';
+import { actions as channelsActions } from '../slices/channelsSlice.js';
+import { actions as messagesActions } from '../slices/messagesSlice.js';
 import { actions as UIActions } from '../slices/UISlice.js';
 import Channels from './Channels.jsx';
 import Chat from './Chat.jsx';
 import useAuth from '../hooks/useAuth.jsx';
+import toastParams from '../toastParams.js';
 
 const Home = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const channelsState = useSelector(channelsSelectors.selectAll);
-  const messagesState = useSelector(messagesSelectors.selectAll);
-  const currentChannel = useSelector((state) => state.currentUI.currentChannelId);
 
   const { getAuthHeader } = useAuth();
   const data = getAuthHeader();
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(routes.dataPath(), { headers: data });
-      const { channels, currentChannelId, messages } = response.data;
-      dispatch(channelsActions.addChannels(channels));
-      dispatch(messagesActions.addMessages(messages));
-      dispatch(UIActions.setCurrentChannelId({ currentChannelId }));
+      try {
+        const response = await axios.get(routes.dataPath(), { headers: data });
+        const { channels, currentChannelId, messages } = response.data;
+        dispatch(channelsActions.addChannels(channels));
+        dispatch(messagesActions.addMessages(messages));
+        dispatch(UIActions.setCurrentChannelId({ currentChannelId }));
+      } catch (err) {
+        toast.warn(t('toast.dataFetchError'), toastParams);
+      }
     };
 
     fetchData();
-  }, [dispatch]);
+  }, [data, dispatch]);
 
   const openAddChannelModal = () => {
     dispatch(UIActions.showModal({ modalType: 'addChannel' }));
