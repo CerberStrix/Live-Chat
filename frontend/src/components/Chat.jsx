@@ -28,14 +28,13 @@ const Chat = () => {
           </b>
         </p>
         <span className="text-muted">
-          {' '}
           {currentMessages.length}
           {' '}
           {t('message_count')}
         </span>
       </div>
       <Messages currentMessages={currentMessages} />
-      <NewMessages />
+      <NewMessages currentChannelId={curChanId} />
     </div>
   );
 };

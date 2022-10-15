@@ -32,11 +32,12 @@ const UISlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(channelsActions.removeChannel, (state, action) => {
-      if (state.currentChannelId === action.payload) {
-        state.currentChannelId = 1;
-      }
-    });
+    builder
+      .addCase(channelsActions.removeChannel, (state, action) => {
+        if (state.currentChannelId === action.payload) {
+          state.currentChannelId = 1;
+        }
+      });
   },
 });
 

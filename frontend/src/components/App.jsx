@@ -13,6 +13,7 @@ import useAuth from '../hooks/useAuth.jsx';
 import AuthProvider from '../contexts/AuthProvider';
 import Home from './Home';
 import Login from './Login';
+import Registration from './Registration';
 import NotFound from './NotFound';
 import NavBar from './NavBar';
 import RenderModal from './modals';
@@ -41,6 +42,7 @@ const App = () => (
           />
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/signup" element={<Registration />} />
         </Routes>
       </Router>
       <RenderModal />

@@ -8,13 +8,13 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Alert from 'react-bootstrap/Alert';
-import avatar from '../assets/avatar.jpg';
-import { loginSchema } from '../utils/validation';
-import fetchAuth from '../utils/fetchAuth';
+import avatar from '../assets/avatar_1.jpg';
+import { registrationSchema } from '../utils/validation';
+import fetchReg from '../utils/fetchReg';
 import useAuth from '../hooks/useAuth.jsx';
 import authMapping from '../utils/mapping';
 
-const Login = () => {
+const Registration = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const inputRef = useRef(null);
@@ -27,27 +27,27 @@ const Login = () => {
   }, []);
 
   const renderFeedback = () => {
-    if (feedbackState) {
-      return (
-        <Alert className="my-2" style={{ textAlign: 'center' }} variant="danger">
-          {t('incorrectAuthData')}
-        </Alert>
-      );
+    if (!feedbackState) {
+      return null;
     }
-    return null;
+    return (
+      <Alert className="my-2" style={{ textAlign: 'center' }} variant="danger">
+        {t('account_exist')}
+      </Alert>
+    );
   };
 
   return (
     <Formik
-      validationSchema={loginSchema}
-      onSubmit={async (data) => {
-        console.log(data);
-        const response = await fetchAuth(data);
+      validationSchema={registrationSchema}
+      onSubmit={async ({ username, password }) => {
+        const response = await fetchReg({ username, password });
         authMapping[response.status](response, logIn, setFeedback, navigate);
       }}
       initialValues={{
         username: '',
         password: '',
+        changepassword: '',
       }}
     >
       {({
@@ -64,23 +64,26 @@ const Login = () => {
                 <Row>
                   <Col xs={{ span: 6 }} sm={{ span: 6 }}>
                     <div className="d-flex" style={{ alignItems: 'center', justifyContent: 'center' }}>
-                      <img className="rounded-circle" src={avatar} alt={t('join')} />
+                      <img className="rounded-circle" src={avatar} alt={t('registration')} />
                     </div>
                   </Col>
                   <Col xs={{ span: 6 }} sm={{ span: 6 }}>
-                    <h1 className="my-3" style={{ textAlign: 'center' }}>{t('join')}</h1>
+                    <h1 className="my-3" style={{ textAlign: 'center' }}>{t('registration')}</h1>
                     <Form.Group controlId="validationFormik01" className="formGroup mb-3">
                       <Form.Control
                         ref={inputRef}
                         type="text"
-                        placeholder={t('your nickname')}
+                        placeholder={t('user_name')}
                         name="username"
                         value={values.username}
                         onChange={handleChange}
                         isInvalid={touched.username && !!errors.username}
                       />
+                      {errors.username && touched.username ? (
+                        <div className="invalid-feedback">{t(errors.username)}</div>
+                      ) : null}
                     </Form.Group>
-                    <Form.Group controlId="validationFormik03" className="formGroup mb-3">
+                    <Form.Group controlId="validationFormik02" className="formGroup mb-3">
                       <Form.Control
                         type="password"
                         placeholder={t('password')}
@@ -89,8 +92,25 @@ const Login = () => {
                         onChange={handleChange}
                         isInvalid={touched.password && !!errors.password}
                       />
+                      {errors.password && touched.password ? (
+                        <div className="invalid-feedback">{t(errors.password)}</div>
+                      ) : null}
+                    </Form.Group>
+                    <Form.Group controlId="validationFormik03" className="formGroup mb-3">
+                      <Form.Control
+                        type="password"
+                        placeholder={t('password')}
+                        name="changepassword"
+                        value={values.changepassword}
+                        onChange={handleChange}
+                        isInvalid={touched.changepassword && !!errors.changepassword}
+                      />
+                      {errors.changepassword && touched.changepassword ? (
+                        <div className="invalid-feedback">{t(errors.changepassword)}</div>
+                      ) : null}
                       {renderFeedback()}
                     </Form.Group>
+
                     <button type="submit" className="btn btn-outline-primary btn-block w-100">
                       {t('join')}
                     </button>
@@ -99,9 +119,9 @@ const Login = () => {
               </Card.Body>
               <Card.Footer className="p-4">
                 <div style={{ textAlign: 'center' }}>
-                  <span className="m-1">{t('doesnt hava account?')}</span>
-                  <a href="/signup">
-                    {t('registration')}
+                  <span className="m-1">{t('have_an_account')}</span>
+                  <a href="/login">
+                    {t('join')}
                   </a>
                 </div>
               </Card.Footer>
@@ -113,4 +133,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Registration;

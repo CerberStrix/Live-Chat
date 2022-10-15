@@ -3,7 +3,6 @@ import Message from './Message';
 
 const Messages = (props) => {
   const { currentMessages } = props;
-  console.log(currentMessages);
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {

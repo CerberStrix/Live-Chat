@@ -3,21 +3,20 @@ import { useTranslation } from 'react-i18next';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
-import { useSelector } from 'react-redux';
 import useAuth from '../hooks/useAuth.jsx';
 import useChatApi from '../hooks/useChatApi';
 
-const NewMessages = () => {
+const NewMessages = (props) => {
+  const { currentChannelId } = props;
   const { t } = useTranslation();
   const [message, setMessage] = useState('');
   const inputRef = useRef(null);
-  const currentChannel = useSelector((state) => state.currentUI.currentChannelId);
   const { getUsername } = useAuth();
   const { createNewChatMessage } = useChatApi();
 
   useEffect(() => {
     inputRef.current.focus();
-  }, [currentChannel]);
+  }, [currentChannelId]);
 
   const handleChange = (e) => {
     setMessage(e.target.value);
@@ -30,12 +29,14 @@ const NewMessages = () => {
     }
     const data = {
       body: message,
-      channelId: currentChannel,
+      channelId: currentChannelId,
       username: getUsername(),
     };
     createNewChatMessage(data);
     setMessage('');
   };
+
+  console.log(currentChannelId);
 
   const btnClass = message.length <= 0 ? 'btn btn-group-vertical disabled' : 'btn btn-group-vertical';
 

@@ -22,5 +22,12 @@ export default {
     delete_channel: 'Удалить канал',
     rename_channel: 'Переименовать канал',
     are_you_sure: 'Уверены?',
+    user_name: 'Имя пользователя',
+    confirm_password: 'Подтвердите пароль',
+    required_field: 'Обязательное поле',
+    min_6_symbols: 'Не менее 6 символов',
+    same_password: 'Пароли должны совпадать',
+    have_an_account: 'Есть аккаунт?',
+    account_exist: 'Аккаунт с таким именем уже существует',
   },
 };
