@@ -20,6 +20,7 @@ const UISlice = createSlice({
     },
     hideModal(state) {
       state.showModal = false;
+      state.modalType = null;
     },
     showModal(state, { payload }) {
       const { modalType } = payload;
