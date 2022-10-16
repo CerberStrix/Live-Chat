@@ -21,6 +21,7 @@ const Home = () => {
 
   const { getAuthHeader } = useAuth();
   const data = getAuthHeader();
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -35,7 +36,7 @@ const Home = () => {
     };
 
     fetchData();
-  }, [data, dispatch]);
+  }, []);
 
   const openAddChannelModal = () => {
     dispatch(UIActions.showModal({ modalType: 'addChannel' }));
