@@ -5,6 +5,7 @@ export default {
     password: 'Пароль',
     registration: 'Регистрация',
     sign_up: 'Зарегистрироваться',
+    password_confirmation: 'Подтвердите пароль',
     'doesnt hava account?': 'Нет аккаунта?',
     incorrectAuthData: 'Неправильный логин или пароль',
     'log out': 'Выйти',

@@ -70,7 +70,7 @@ const Registration = () => {
                   <Col xs={{ span: 6 }} sm={{ span: 6 }}>
                     <h1 className="my-3" style={{ textAlign: 'center' }}>{t('registration')}</h1>
                     <Form.Group controlId="username" className="formGroup mb-3">
-                      <Form.Label htmlFor="username" visuallyHidden="false">username</Form.Label>
+                      <Form.Label htmlFor="username" visuallyHidden="false">{t('user_name')}</Form.Label>
                       <Form.Control
                         ref={inputRef}
                         type="text"
@@ -85,7 +85,7 @@ const Registration = () => {
                       ) : null}
                     </Form.Group>
                     <Form.Group controlId="password" className="formGroup mb-3">
-                      <Form.Label htmlFor="password" visuallyHidden="false">password</Form.Label>
+                      <Form.Label htmlFor="password" visuallyHidden="false">{t('password')}</Form.Label>
                       <Form.Control
                         type="password"
                         placeholder={t('password')}
@@ -99,10 +99,10 @@ const Registration = () => {
                       ) : null}
                     </Form.Group>
                     <Form.Group controlId="passwordConfirmation" className="formGroup mb-3">
-                      <Form.Label htmlFor="passwordConfirmation" visuallyHidden="false">passwordConfirmation</Form.Label>
+                      <Form.Label htmlFor="passwordConfirmation" visuallyHidden="false">{t('password_confirmation')}</Form.Label>
                       <Form.Control
                         type="password"
-                        placeholder={t('password')}
+                        placeholder={t('password_confirmation')}
                         name="passwordConfirmation"
                         value={values.passwordConfirmation}
                         onChange={handleChange}
