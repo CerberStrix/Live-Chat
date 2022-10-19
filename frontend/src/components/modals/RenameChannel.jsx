@@ -60,22 +60,26 @@ const RenameChannel = () => {
             errors,
           }) => (
             <Form onSubmit={handleSubmit}>
-              <FormControl
-                type="text"
-                name="name"
-                value={values.name}
-                onChange={handleChange}
-                ref={inputEl}
-                isInvalid={touched.name && !!errors.name}
-                className="mb-2"
-              />
-              {errors.name && touched.name ? (
-                <div className="invalid-feedback">{t(errors.name)}</div>
-              ) : null}
-              <div className="text-end">
-                <button type="button" className="btn btn-secondary btn-block mx-1" onClick={() => hideHandle()}>{t('cancel')}</button>
-                <button type="submit" className="btn btn-primary btn-block">{t('send')}</button>
-              </div>
+              <Form.Group>
+                <Form.Label htmlFor="name" className="visually-hidden" />
+                <FormControl
+                  type="text"
+                  name="name"
+                  value={values.name}
+                  onChange={handleChange}
+                  ref={inputEl}
+                  isInvalid={touched.name && !!errors.name}
+                  className="mb-2"
+                  id="name"
+                />
+                {errors.name && touched.name ? (
+                  <div className="invalid-feedback">{t(errors.name)}</div>
+                ) : null}
+                <div className="text-end">
+                  <button type="button" className="btn btn-secondary btn-block mx-1" onClick={() => hideHandle()}>{t('cancel')}</button>
+                  <button type="submit" className="btn btn-primary btn-block">{t('send')}</button>
+                </div>
+              </Form.Group>
             </Form>
           )}
         </Formik>
