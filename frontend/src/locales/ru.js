@@ -9,6 +9,7 @@ export default {
     'doesnt hava account?': 'Нет аккаунта?',
     incorrectAuthData: 'Неверные имя пользователя или пароль',
     new_message: 'Новое сообщение',
+    channel_name: 'Имя канала',
     'log out': 'Выйти',
     channels: 'Каналы',
     'enter messages': 'Введите сообщение',

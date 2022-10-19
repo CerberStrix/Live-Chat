@@ -58,6 +58,7 @@ const AddChannel = () => {
             errors,
           }) => (
             <Form onSubmit={handleSubmit}>
+              <Form.Label htmlFor="name" visuallyHidden="false">{t('channel_name')}</Form.Label>
               <FormControl
                 type="text"
                 name="name"
