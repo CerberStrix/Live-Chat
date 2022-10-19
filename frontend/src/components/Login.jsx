@@ -78,7 +78,7 @@ const Login = () => {
                         name="username"
                         value={values.username}
                         onChange={handleChange}
-                        isInvalid={touched.username && !!errors.username}
+                        isInvalid={(touched.username && !!errors.username) || feedbackState}
                       />
                       {errors.username && touched.username ? (
                         <div className="invalid-feedback">{t(errors.username)}</div>
@@ -92,7 +92,7 @@ const Login = () => {
                         name="password"
                         value={values.password}
                         onChange={handleChange}
-                        isInvalid={touched.password && !!errors.password}
+                        isInvalid={(touched.password && !!errors.password) || feedbackState}
                       />
                       {errors.password && touched.password ? (
                         <div className="invalid-feedback">{t(errors.password)}</div>

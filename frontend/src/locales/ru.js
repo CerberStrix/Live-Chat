@@ -7,7 +7,7 @@ export default {
     sign_up: 'Зарегистрироваться',
     password_confirmation: 'Подтвердите пароль',
     'doesnt hava account?': 'Нет аккаунта?',
-    incorrectAuthData: 'Неправильный логин или пароль',
+    incorrectAuthData: 'Неверные имя пользователя или пароль',
     'log out': 'Выйти',
     channels: 'Каналы',
     'enter messages': 'Введите сообщение',
