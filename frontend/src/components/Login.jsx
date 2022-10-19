@@ -69,7 +69,8 @@ const Login = () => {
                   </Col>
                   <Col xs={{ span: 6 }} sm={{ span: 6 }}>
                     <h1 className="my-3" style={{ textAlign: 'center' }}>{t('join')}</h1>
-                    <Form.Group controlId="validationFormik01" className="formGroup mb-3">
+                    <Form.Group controlId="username" className="formGroup mb-3">
+                      <Form.Label htmlFor="username" visuallyHidden="false">{t('your nickname')}</Form.Label>
                       <Form.Control
                         ref={inputRef}
                         type="text"
@@ -80,7 +81,8 @@ const Login = () => {
                         isInvalid={touched.username && !!errors.username}
                       />
                     </Form.Group>
-                    <Form.Group controlId="validationFormik03" className="formGroup mb-3">
+                    <Form.Group controlId="password" className="formGroup mb-3">
+                      <Form.Label htmlFor="password" visuallyHidden="false">{t('password')}</Form.Label>
                       <Form.Control
                         type="password"
                         placeholder={t('password')}
