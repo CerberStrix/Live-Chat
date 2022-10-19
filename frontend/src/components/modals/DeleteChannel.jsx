@@ -52,7 +52,9 @@ const DeleteChannel = () => {
               {t('cancel')}
               {' '}
             </button>
-            <input type="submit" value={t('delete')} className="btn btn-danger btn-block" ref={inputEl} />
+            <button type="submit" className="btn btn-danger btn-block" ref={inputEl}>
+              {t('delete')}
+            </button>
           </div>
         </form>
       </Modal.Body>
