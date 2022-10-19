@@ -7,8 +7,8 @@ export const loginSchema = yup.object().shape({
 
 export const validateName = (existNames) => {
   const channelSchema = yup.object().shape({
-    name: yup.string().min(3, 'incorrect_symbols_count').max(20, 'incorrect_symbols_count').notOneOf(existNames, 'should_be_uniq')
-      .required('incorrect_symbols_count'),
+    name: yup.string().notOneOf(existNames, 'should_be_uniq')
+      .required('required_field'),
   });
   return channelSchema;
 };
