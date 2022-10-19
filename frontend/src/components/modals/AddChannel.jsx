@@ -67,6 +67,7 @@ const AddChannel = () => {
                 ref={inputEl}
                 isInvalid={touched.name && !!errors.name}
                 className="mb-2"
+                id="name"
               />
               {errors.name && touched.name ? (
                 <div className="invalid-feedback">{t(errors.name)}</div>
