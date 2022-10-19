@@ -38,6 +38,7 @@ const DeleteChannel = () => {
     >
       <Modal.Header closeButton onHide={hideHandle}>
         <Modal.Title>{t('delete_channel')}</Modal.Title>
+
       </Modal.Header>
       <Modal.Body>
         <form onSubmit={deleteHandle}>
