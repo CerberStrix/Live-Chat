@@ -61,7 +61,7 @@ const RenameChannel = () => {
           }) => (
             <Form onSubmit={handleSubmit}>
               <Form.Group>
-                <Form.Label htmlFor="name" className="visually-hidden" />
+                <Form.Label htmlFor="name" className="visually-hidden">{t('channel_name')}</Form.Label>
                 <FormControl
                   type="text"
                   name="name"
