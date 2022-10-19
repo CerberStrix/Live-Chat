@@ -43,13 +43,16 @@ const NewMessages = (props) => {
   return (
     <div className="mt-auto px-5 py-2">
       <Form onSubmit={(e) => handleSubmit(e)}>
+        <Form.Label htmlFor="body" visuallyHidden="false">{t('new_message')}</Form.Label>
         <InputGroup className="mb-3">
           <Form.Control
             placeholder={t('enter_message')}
-            aria-label={t('enter_message')}
+            aria-label={t('new_message')}
             value={message}
             onChange={handleChange}
             ref={inputRef}
+            name="body"
+            id="body"
           />
           <Button variant="outline-secondary" className={btnClass} type="submit" style={{ alignItems: 'center', outline: 'none' }}>
             <ion-icon size="small" name="arrow-forward-outline" />
