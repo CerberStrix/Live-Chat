@@ -80,6 +80,9 @@ const Login = () => {
                         onChange={handleChange}
                         isInvalid={touched.username && !!errors.username}
                       />
+                      {errors.username && touched.username ? (
+                        <div className="invalid-feedback">{t(errors.username)}</div>
+                      ) : null}
                     </Form.Group>
                     <Form.Group controlId="password" className="formGroup mb-3">
                       <Form.Label htmlFor="password" visuallyHidden="false">{t('password')}</Form.Label>
@@ -91,6 +94,9 @@ const Login = () => {
                         onChange={handleChange}
                         isInvalid={touched.password && !!errors.password}
                       />
+                      {errors.password && touched.password ? (
+                        <div className="invalid-feedback">{t(errors.password)}</div>
+                      ) : null}
                       {renderFeedback()}
                     </Form.Group>
                     <button type="submit" className="btn btn-outline-primary btn-block w-100">

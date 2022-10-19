@@ -1,8 +1,8 @@
 import * as yup from 'yup';
 
 export const loginSchema = yup.object().shape({
-  username: yup.string().required(),
-  password: yup.string().required(),
+  username: yup.string().required('required_field'),
+  password: yup.string().required('required_field'),
 });
 
 export const validateName = (existNames) => {
