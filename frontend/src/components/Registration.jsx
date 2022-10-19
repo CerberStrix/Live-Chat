@@ -47,7 +47,7 @@ const Registration = () => {
       initialValues={{
         username: '',
         password: '',
-        changepassword: '',
+        passwordConfirmation: '',
       }}
     >
       {({
@@ -69,7 +69,8 @@ const Registration = () => {
                   </Col>
                   <Col xs={{ span: 6 }} sm={{ span: 6 }}>
                     <h1 className="my-3" style={{ textAlign: 'center' }}>{t('registration')}</h1>
-                    <Form.Group controlId="validationFormik01" className="formGroup mb-3">
+                    <Form.Group controlId="username" className="formGroup mb-3">
+                      <Form.Label htmlFor="username" visuallyHidden="false">username</Form.Label>
                       <Form.Control
                         ref={inputRef}
                         type="text"
@@ -83,7 +84,8 @@ const Registration = () => {
                         <div className="invalid-feedback">{t(errors.username)}</div>
                       ) : null}
                     </Form.Group>
-                    <Form.Group controlId="validationFormik02" className="formGroup mb-3">
+                    <Form.Group controlId="password" className="formGroup mb-3">
+                      <Form.Label htmlFor="password" visuallyHidden="false">password</Form.Label>
                       <Form.Control
                         type="password"
                         placeholder={t('password')}
@@ -96,23 +98,24 @@ const Registration = () => {
                         <div className="invalid-feedback">{t(errors.password)}</div>
                       ) : null}
                     </Form.Group>
-                    <Form.Group controlId="validationFormik03" className="formGroup mb-3">
+                    <Form.Group controlId="passwordConfirmation" className="formGroup mb-3">
+                      <Form.Label htmlFor="passwordConfirmation" visuallyHidden="false">passwordConfirmation</Form.Label>
                       <Form.Control
                         type="password"
                         placeholder={t('password')}
-                        name="changepassword"
-                        value={values.changepassword}
+                        name="passwordConfirmation"
+                        value={values.passwordConfirmation}
                         onChange={handleChange}
-                        isInvalid={touched.changepassword && !!errors.changepassword}
+                        isInvalid={touched.passwordConfirmation && !!errors.passwordConfirmation}
                       />
-                      {errors.changepassword && touched.changepassword ? (
-                        <div className="invalid-feedback">{t(errors.changepassword)}</div>
+                      {errors.passwordConfirmation && touched.passwordConfirmation ? (
+                        <div className="invalid-feedback">{t(errors.passwordConfirmation)}</div>
                       ) : null}
                       {renderFeedback()}
                     </Form.Group>
 
                     <button type="submit" className="btn btn-outline-primary btn-block w-100">
-                      {t('join')}
+                      {t('sign_up')}
                     </button>
                   </Col>
                 </Row>

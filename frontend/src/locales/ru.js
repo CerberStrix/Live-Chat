@@ -4,6 +4,7 @@ export default {
     'your nickname': 'Ваш никнейм',
     password: 'Пароль',
     registration: 'Регистрация',
+    sign_up: 'Зарегистрироваться',
     'doesnt hava account?': 'Нет аккаунта?',
     incorrectAuthData: 'Неправильный логин или пароль',
     'log out': 'Выйти',
