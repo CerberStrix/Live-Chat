@@ -68,7 +68,7 @@ const Registration = () => {
                   </Col>
                   <Col xs={{ span: 6 }} sm={{ span: 6 }}>
                     <h1 className="my-3" style={{ textAlign: 'center' }}>{t('registration')}</h1>
-                    <Form.Group className="formGroup mb-3">
+                    <Form.Group controlId="username" className="formGroup mb-3">
                       <Form.Label htmlFor="username" visuallyHidden="false">{t('user_name')}</Form.Label>
                       <Form.Control
                         ref={inputRef}
@@ -83,7 +83,7 @@ const Registration = () => {
                         <div className="invalid-feedback">{t(errors.username)}</div>
                       ) : null}
                     </Form.Group>
-                    <Form.Group className="formGroup mb-3">
+                    <Form.Group controlId="password" className="formGroup mb-3">
                       <Form.Label htmlFor="password" visuallyHidden="false">{t('password')}</Form.Label>
                       <Form.Control
                         type="password"
@@ -97,7 +97,7 @@ const Registration = () => {
                         <div className="invalid-feedback">{t(errors.password)}</div>
                       ) : null}
                     </Form.Group>
-                    <Form.Group className="formGroup mb-3">
+                    <Form.Group controlId="passwordConfirmation" className="formGroup mb-3">
                       <Form.Label htmlFor="passwordConfirmation" visuallyHidden="false">{t('password_confirmation')}</Form.Label>
                       <Form.Control
                         type="password"
