@@ -59,7 +59,6 @@ const Home = () => {
           <Chat />
         </Col>
       </Row>
-
     </Container>
   );
 };
