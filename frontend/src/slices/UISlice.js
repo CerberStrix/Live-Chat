@@ -23,13 +23,10 @@ const UISlice = createSlice({
       state.modalType = null;
     },
     showModal(state, { payload }) {
-      const { modalType } = payload;
+      const { modalType, channel = null } = payload;
       state.modalType = modalType;
-      state.showModal = true;
-    },
-    setTarget(state, { payload }) {
-      const { channel } = payload;
       state.targetChannel = channel;
+      state.showModal = true;
     },
   },
   extraReducers: (builder) => {

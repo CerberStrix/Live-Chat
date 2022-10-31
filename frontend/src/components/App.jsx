@@ -19,12 +19,13 @@ import NotFound from './NotFound';
 import NavBar from './NavBar';
 import RenderModal from './modals';
 import 'react-toastify/dist/ReactToastify.css';
+import routes from '../routes';
 
 const PrivateRoute = ({ children }) => {
   const auth = useAuth();
   const location = useLocation();
   return (
-    auth.loggedIn ? children : <Navigate to="/login" state={{ from: location }} />
+    auth.loggedIn ? children : <Navigate to={routes.loginPage()} state={{ from: location }} />
   );
 };
 

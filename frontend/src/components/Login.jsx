@@ -12,14 +12,13 @@ import avatar from '../assets/avatar.jpg';
 import { loginSchema } from '../utils/validation';
 import fetchAuth from '../utils/fetchAuth';
 import useAuth from '../hooks/useAuth.jsx';
-import authMapping from '../utils/mapping';
 
 const Login = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const inputRef = useRef(null);
   const auth = useAuth();
-  const { logIn } = auth;
+  const { authMapping } = auth;
   const [feedbackState, setFeedback] = useState(false);
 
   useEffect(() => {
@@ -43,7 +42,7 @@ const Login = () => {
       onSubmit={async (data) => {
         console.log(data);
         const response = await fetchAuth(data);
-        authMapping[response.status](response, logIn, setFeedback, navigate);
+        authMapping[response.status](response, setFeedback, navigate);
       }}
       initialValues={{
         username: '',
@@ -69,7 +68,7 @@ const Login = () => {
                   </Col>
                   <Col xs={{ span: 6 }} sm={{ span: 6 }}>
                     <h1 className="my-3" style={{ textAlign: 'center' }}>{t('join')}</h1>
-                    <Form.Group controlId="username" className="formGroup mb-3">
+                    <Form.Group className="formGroup mb-3">
                       <Form.Label htmlFor="username" visuallyHidden="false">{t('your nickname')}</Form.Label>
                       <Form.Control
                         ref={inputRef}
@@ -84,7 +83,7 @@ const Login = () => {
                         <div className="invalid-feedback">{t(errors.username)}</div>
                       ) : null}
                     </Form.Group>
-                    <Form.Group controlId="password" className="formGroup mb-3">
+                    <Form.Group className="formGroup mb-3">
                       <Form.Label htmlFor="password" visuallyHidden="false">{t('password')}</Form.Label>
                       <Form.Control
                         type="password"

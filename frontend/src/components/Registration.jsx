@@ -12,14 +12,13 @@ import avatar from '../assets/avatar_1.jpg';
 import { registrationSchema } from '../utils/validation';
 import fetchReg from '../utils/fetchReg';
 import useAuth from '../hooks/useAuth.jsx';
-import authMapping from '../utils/mapping';
 
 const Registration = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const inputRef = useRef(null);
   const auth = useAuth();
-  const { logIn } = auth;
+  const { authMapping } = auth;
   const [feedbackState, setFeedback] = useState(false);
 
   useEffect(() => {
@@ -42,7 +41,7 @@ const Registration = () => {
       validationSchema={registrationSchema}
       onSubmit={async ({ username, password }) => {
         const response = await fetchReg({ username, password });
-        authMapping[response.status](response, logIn, setFeedback, navigate);
+        authMapping[response.status](response, setFeedback, navigate);
       }}
       initialValues={{
         username: '',
@@ -69,7 +68,7 @@ const Registration = () => {
                   </Col>
                   <Col xs={{ span: 6 }} sm={{ span: 6 }}>
                     <h1 className="my-3" style={{ textAlign: 'center' }}>{t('registration')}</h1>
-                    <Form.Group controlId="username" className="formGroup mb-3">
+                    <Form.Group className="formGroup mb-3">
                       <Form.Label htmlFor="username" visuallyHidden="false">{t('user_name')}</Form.Label>
                       <Form.Control
                         ref={inputRef}
@@ -84,7 +83,7 @@ const Registration = () => {
                         <div className="invalid-feedback">{t(errors.username)}</div>
                       ) : null}
                     </Form.Group>
-                    <Form.Group controlId="password" className="formGroup mb-3">
+                    <Form.Group className="formGroup mb-3">
                       <Form.Label htmlFor="password" visuallyHidden="false">{t('password')}</Form.Label>
                       <Form.Control
                         type="password"
@@ -98,7 +97,7 @@ const Registration = () => {
                         <div className="invalid-feedback">{t(errors.password)}</div>
                       ) : null}
                     </Form.Group>
-                    <Form.Group controlId="passwordConfirmation" className="formGroup mb-3">
+                    <Form.Group className="formGroup mb-3">
                       <Form.Label htmlFor="passwordConfirmation" visuallyHidden="false">{t('password_confirmation')}</Form.Label>
                       <Form.Control
                         type="password"

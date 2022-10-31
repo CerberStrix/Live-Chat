@@ -17,8 +17,7 @@ const Channel = ({ channel }) => {
   };
 
   const openModal = (modalType) => {
-    dispatch(UIActions.setTarget({ channel }));
-    dispatch(UIActions.showModal({ modalType }));
+    dispatch(UIActions.showModal({ modalType, channel }));
   };
 
   return (
