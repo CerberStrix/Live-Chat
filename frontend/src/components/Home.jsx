@@ -18,7 +18,6 @@ import toastParams from '../toastParams.js';
 const Home = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-
   const { getAuthHeader } = useAuth();
   const data = getAuthHeader();
 
