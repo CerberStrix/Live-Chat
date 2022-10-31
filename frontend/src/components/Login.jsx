@@ -39,10 +39,12 @@ const Login = () => {
   return (
     <Formik
       validationSchema={loginSchema}
-      onSubmit={async (data) => {
+      onSubmit={async (data, { setSubmitting }) => {
         console.log(data);
+        setSubmitting(true);
         const response = await fetchAuth(data);
         authMapping[response.status](response, setFeedback, navigate);
+        setSubmitting(false);
       }}
       initialValues={{
         username: '',
@@ -55,6 +57,7 @@ const Login = () => {
         values,
         touched,
         errors,
+        isSubmitting,
       }) => (
         <Form onSubmit={handleSubmit} className="formLogin">
           <Container>
@@ -98,7 +101,7 @@ const Login = () => {
                       ) : null}
                       {renderFeedback()}
                     </Form.Group>
-                    <button type="submit" className="btn btn-outline-primary btn-block w-100">
+                    <button type="submit" className="btn btn-outline-primary btn-block w-100" disabled={isSubmitting}>
                       {t('join')}
                     </button>
                   </Col>
